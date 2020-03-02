@@ -31,7 +31,11 @@ module.exports = {
       {
         test: /\.(png|svg|jpg|gif|webp)/,
         include: [path.resolve(__dirname, 'src', 'styles')],
-        use: ['file-loader'],
+        use: 'file-loader',
+      },
+      {
+        test: /\.html$/,
+        use: 'html-loader',
       },
     ],
   },
