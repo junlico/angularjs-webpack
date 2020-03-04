@@ -7,14 +7,19 @@ module.exports = {
   entry: './src/app.js',
   plugins: [
     new CleanWebpackPlugin(),
-    new MiniCssExtractPlugin(),
+    new MiniCssExtractPlugin({
+      filename: 'css/[name].[contenthash].css',
+      chunkFilename: 'css/[id].[contenthash].css',
+    }),
     new HtmlWebpackPlugin({
       template: './src/index.html',
     }),
   ],
   output: {
+    filename: 'js/[name].[contenthash].js',
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].[contenthash].js',
+    chunkFilename: 'js/[name].[contenthash].js',
+    publicPath: '/',
   },
   module: {
     rules: [
@@ -30,12 +35,21 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpg|gif|webp)/,
-        include: [path.resolve(__dirname, 'src', 'styles')],
         use: 'file-loader',
       },
       {
         test: /\.html$/,
         use: 'html-loader',
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+          },
+        },
       },
     ],
   },
