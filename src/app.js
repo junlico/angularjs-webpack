@@ -1,8 +1,11 @@
 import angular from 'angular';
-import './main/main.module';
+import uirouter from '@uirouter/angularjs';
 
-const mainApp = angular.module('mainApp', ['mainModule']);
+import routing from './app.config';
+import main from './main';
 
-mainApp.controller('appController', $scope => {
-  $scope.title = 'Hello Angular';
-});
+(function() {
+  'use strict';
+
+  angular.module('app', [uirouter, main]).config(routing);
+})();

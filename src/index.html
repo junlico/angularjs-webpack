@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html ng-app="mainApp">
+<html ng-app="app">
   <head>
     <meta charset="utf-8" />
     <title>Webpack Angular</title>
+    <base href="/" />
   </head>
 
-  <body ng-controller="appController">
-    <h1>Hello World</h1>
-    <h1>{{title}}</h1>
-    <main-component></main-component>
+  <body>
+    <ui-view></ui-view>
   </body>
 </html>

@@ -9,6 +9,7 @@
   "author": "junlico",
   "license": "MIT",
   "dependencies": {
+    "@uirouter/angularjs": "^1.0.25",
     "angular": "^1.7.9"
   },
   "devDependencies": {
